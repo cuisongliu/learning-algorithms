@@ -1,4 +1,4 @@
-package sorting.basic.selection;
+package utils;
 /*
  * The MIT License (MIT)
  *
@@ -24,46 +24,16 @@ package sorting.basic.selection;
  */
 
 /**
- * 排序帮助类
+ * 排序接口
  *
  * @author cuisongliu [cuisongliu@qq.com]
- * @since 2018-06-15 下午1:10
+ * @since 2018-06-15 下午3:46
  */
-public class SortingHelper {
-    private SortingHelper(){}
-
+public interface Sorting {
     /**
-     * 生成随机数组
-     * @param n 产生数组内的元素数量
-     * @param rangeL 随机最小值
-     * @param rangeR 随机最大值
-     * @return
+     * 排序接口
+     * @param arr
+     * @param <T>
      */
-    public static Integer[] generatorRandomArray(Integer n,Integer rangeL,Integer rangeR){
-        assert rangeL <= rangeR;
-        Integer[] arr = new Integer[n];
-        for (int i = 0;i< n ; i++){
-            // 数量乘以 大于1 的值 然后 + 最小值
-            arr[i] = (int)(Math.random()* (rangeR - rangeL + 1 ) + rangeL);
-        }
-        return arr;
-    }
-
-    /**
-     * 打印输出数组
-     * @param arr 需要输出的数组
-     */
-    public  static void printArray(Object arr[]){
-        int i = 0;
-        for (Object obj:arr) {
-            if (i % 10 ==9){
-                System.out.println(String.format("%5s",obj) + "   " );
-            }
-            else {
-                System.out.print(String.format("%5s",obj)  + "   " );
-            }
-            i++;
-        }
-        System.out.println();
-    }
+    public <T extends Comparable> void sort(T[] arr);
 }

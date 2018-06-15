@@ -23,7 +23,8 @@ package sorting.basic.selection.template;
  * THE SOFTWARE.
  */
 
-import sorting.basic.selection.SortingHelper;
+import utils.Sorting;
+import utils.SortingHelper;
 import utils.Algorithms;
 
 /**
@@ -32,9 +33,9 @@ import utils.Algorithms;
  * @author cuisongliu [cuisongliu@qq.com]
  * @since 2018-06-15 下午12:23
  */
-public class SelectionSort {
+public class SelectionSort implements Sorting {
 
-    static <T extends Comparable> void sort(T[] arr){
+    public <T extends Comparable> void sort(T[] arr){
         for (int i =0;i < arr.length ; i++){
             // 寻找 [i,arr.length) 区间的最小值
             for (int j =i+1 ;j< arr.length;j++){
@@ -47,18 +48,15 @@ public class SelectionSort {
 
     public static void main(String[] args) {
         Integer[] arr = new Integer[]{3,5,1,2,6,8,4,7,9};
-        sort(arr);
-        SortingHelper.printArray(arr);
+        SortingHelper.testPrint(new SelectionSort(),arr);
 
-
-        System.out.println();
         Student[] students = new Student[]{new Student(5),new Student(3),new Student(1),new Student(9),new Student(6)};
-        sort(students);
-        SortingHelper.printArray(students);
-        System.out.println();
+        SortingHelper.testPrint(new SelectionSort(),students);
 
         Integer[] randomArr = SortingHelper.generatorRandomArray(100,100,10000);
-        sort(randomArr);
-        SortingHelper.printArray(randomArr);
+        SortingHelper.testPrint(new SelectionSort(),randomArr);
+
+        Integer[] randomTestArr = SortingHelper.generatorRandomArray(100,100,10000);
+        SortingHelper.testSort(new SelectionSort(),randomTestArr);
     }
 }
