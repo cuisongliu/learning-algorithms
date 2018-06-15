@@ -23,38 +23,37 @@ package sorting.basic.selection.template;
  * THE SOFTWARE.
  */
 
-import utils.Algorithms;
-
 /**
- * 选择排序
+ * 需要比较的类
  *
  * @author cuisongliu [cuisongliu@qq.com]
- * @since 2018-06-15 下午12:23
+ * @since 2018-06-15 下午1:00
  */
-public class SelectionSort {
+public class Student implements Comparable {
+    private Integer age;
 
-    static <T extends Comparable> void sort(T[] arr){
-        for (int i =0;i < arr.length ; i++){
-            // 寻找 [i,arr.length) 区间的最小值
-            for (int j =i+1 ;j< arr.length;j++){
-                if (arr[j].compareTo(arr[i]) < 0 ){
-                    Algorithms.swap(arr,i,j);
-                }
-            }
-        }
+    public Integer getAge() {
+        return age;
     }
 
-    public static void main(String[] args) {
-        Integer[] arr = new Integer[]{3,5,1,2,6,8,4,7,9};
-        sort(arr);
-        for (Integer s:arr) {
-            System.out.print(s+ "   ");
-        }
-        System.out.println();
-        Student[] students = new Student[]{new Student(5),new Student(3),new Student(1),new Student(9),new Student(6)};
-        sort(students);
-        for (Student s:students) {
-            System.out.print(s+ "   ");
-        }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public Student(Integer age) {
+        this.age = age;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Student s = (Student) o ;
+        return age.compareTo(s.getAge());
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "age=" + age +
+                '}';
     }
 }
