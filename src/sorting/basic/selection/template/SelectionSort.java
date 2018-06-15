@@ -1,4 +1,4 @@
-package sorting.basic.selection;
+package sorting.basic.selection.template;
 /*
  * The MIT License (MIT)
  *
@@ -23,6 +23,8 @@ package sorting.basic.selection;
  * THE SOFTWARE.
  */
 
+import utils.Algorithms;
+
 /**
  * 选择排序
  *
@@ -31,28 +33,12 @@ package sorting.basic.selection;
  */
 public class SelectionSort {
 
-    static  void sort(Integer[] arr){
+    static <T extends Comparable> void sort(T[] arr){
         for (int i =0;i < arr.length ; i++){
             // 寻找 [i,arr.length) 区间的最小值
             for (int j =i+1 ;j< arr.length;j++){
-                if (arr[j]< arr[i]){
-                    //交换
-                    int a = arr[i];
-                    int b = arr[j];
-                    // 异或交换
-                    a = a^ b;
-                    b = a^ b;
-                    a = a^ b;
-                    // 加法交换
-                    a = a + b;
-                    b = a - b;
-                    a = a - b;
-                    // 乘法交换 别出0 否则出现报错情况
-                    a = a * b;
-                    b = a / b;
-                    a = a / b;
-                    arr[i] = a;
-                    arr[j] = b;
+                if (arr[j].compareTo(arr[i]) < 0 ){
+                    Algorithms.swap(arr,i,j);
                 }
             }
         }

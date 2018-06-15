@@ -1,4 +1,4 @@
-package sorting.basic.selection;
+package utils;
 /*
  * The MIT License (MIT)
  *
@@ -24,45 +24,26 @@ package sorting.basic.selection;
  */
 
 /**
- * 选择排序
+ * 算法工具
  *
  * @author cuisongliu [cuisongliu@qq.com]
- * @since 2018-06-15 下午12:23
+ * @since 2018-06-15 下午12:49
  */
-public class SelectionSort {
-
-    static  void sort(Integer[] arr){
-        for (int i =0;i < arr.length ; i++){
-            // 寻找 [i,arr.length) 区间的最小值
-            for (int j =i+1 ;j< arr.length;j++){
-                if (arr[j]< arr[i]){
-                    //交换
-                    int a = arr[i];
-                    int b = arr[j];
-                    // 异或交换
-                    a = a^ b;
-                    b = a^ b;
-                    a = a^ b;
-                    // 加法交换
-                    a = a + b;
-                    b = a - b;
-                    a = a - b;
-                    // 乘法交换 别出0 否则出现报错情况
-                    a = a * b;
-                    b = a / b;
-                    a = a / b;
-                    arr[i] = a;
-                    arr[j] = b;
-                }
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        Integer[] arr = new Integer[]{3,5,1,2,6,8,4,7,9};
-        sort(arr);
-        for (Integer s:arr) {
-            System.out.print(s+ "   ");
-        }
+public class Algorithms {
+    /**
+     * 交换工具
+     * @param arr 待交换数组
+     * @param i 第一个位置
+     * @param j 第二个位置
+     * @param <T> 泛型
+     */
+    public  static <T> void swap(T[] arr,int i,int j){
+        T a = arr[i];
+        T b = arr[j];
+        T c = a;
+        a = b;
+        b = c;
+        arr[i] = a ;
+        arr[j] = b ;
     }
 }
