@@ -23,6 +23,7 @@ package sorting.basic.selection.template;
  * THE SOFTWARE.
  */
 
+import sorting.basic.selection.SortingHelper;
 import utils.Algorithms;
 
 /**
@@ -47,14 +48,17 @@ public class SelectionSort {
     public static void main(String[] args) {
         Integer[] arr = new Integer[]{3,5,1,2,6,8,4,7,9};
         sort(arr);
-        for (Integer s:arr) {
-            System.out.print(s+ "   ");
-        }
+        SortingHelper.printArray(arr);
+
+
         System.out.println();
         Student[] students = new Student[]{new Student(5),new Student(3),new Student(1),new Student(9),new Student(6)};
         sort(students);
-        for (Student s:students) {
-            System.out.print(s+ "   ");
-        }
+        SortingHelper.printArray(students);
+        System.out.println();
+
+        Integer[] randomArr = SortingHelper.generatorRandomArray(100,100,10000);
+        sort(randomArr);
+        SortingHelper.printArray(randomArr);
     }
 }

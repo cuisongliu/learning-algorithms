@@ -1,4 +1,4 @@
-package sorting.basic.selection.template;
+package sorting.basic.selection;
 /*
  * The MIT License (MIT)
  *
@@ -24,35 +24,46 @@ package sorting.basic.selection.template;
  */
 
 /**
- * 需要比较的类
+ * 排序帮助类
  *
  * @author cuisongliu [cuisongliu@qq.com]
- * @since 2018-06-15 下午1:00
+ * @since 2018-06-15 下午1:10
  */
-public class Student implements Comparable {
-    private Integer age;
+public class SortingHelper {
+    private SortingHelper(){}
 
-    public Integer getAge() {
-        return age;
+    /**
+     * 生成随机数组
+     * @param n 产生数组内的元素数量
+     * @param rangeL 随机最小值
+     * @param rangeR 随机最大值
+     * @return
+     */
+    public static Integer[] generatorRandomArray(Integer n,Integer rangeL,Integer rangeR){
+        assert rangeL <= rangeR;
+        Integer[] arr = new Integer[n];
+        for (int i = 0;i< n ; i++){
+            // 数量乘以 大于1 的值 然后 + 最小值
+            arr[i] = (int)(Math.random()* (rangeR - rangeL + 1 ) + rangeL);
+        }
+        return arr;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public Student(Integer age) {
-        this.age = age;
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        Student s = (Student) o ;
-        return age.compareTo(s.getAge());
-    }
-
-    @Override
-    public String toString() {
-        return
-                "age=" + age ;
+    /**
+     * 打印输出数组
+     * @param arr 需要输出的数组
+     */
+    public  static void printArray(Object arr[]){
+        int i = 0;
+        for (Object obj:arr) {
+            if (i % 10 ==9){
+                System.out.println(String.format("%5s",obj) + "   " );
+            }
+            else {
+                System.out.print(String.format("%5s",obj)  + "   " );
+            }
+            i++;
+        }
+        System.out.println();
     }
 }
