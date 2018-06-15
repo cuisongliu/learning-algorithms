@@ -56,7 +56,7 @@ public class SelectionSort implements Sorting {
         Integer[] randomArr = SortingHelper.generatorRandomArray(100,100,10000);
         SortingHelper.testPrint(new SelectionSort(),randomArr);
 
-        Integer[] randomTestArr = SortingHelper.generatorRandomArray(100,100,10000);
+        Integer[] randomTestArr = SortingHelper.generatorRandomArray(10000,1,100000);
         SortingHelper.testSort(new SelectionSort(),randomTestArr);
     }
 }

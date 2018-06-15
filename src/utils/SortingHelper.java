@@ -68,12 +68,21 @@ public class SortingHelper {
         }
     }
 
+    // 判断arr数组是否有序
+    public static boolean isSorted(Comparable[] arr){
+        for( int i = 0 ; i < arr.length - 1 ; i ++ )
+            if( arr[i].compareTo(arr[i+1]) > 0 )
+                return false;
+        return true;
+    }
+
 
     public static <T extends Comparable> void testSort(Sorting sorting, T[] arr) {
         //设置参数
         long startTime = System.currentTimeMillis();
         sorting.sort(arr);
         long endTime = System.currentTimeMillis();
+        assert isSorted( arr );
         System.out.println(sorting.getClass().getSimpleName() + ":执行所用毫秒数为" + (endTime - startTime) + "ms,执行所用秒数为" + (endTime - startTime) / 1000.0 + "s");
     }
 
