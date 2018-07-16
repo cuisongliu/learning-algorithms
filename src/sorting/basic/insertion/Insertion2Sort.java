@@ -45,12 +45,12 @@ public class Insertion2Sort implements Sorting {
             arr[j] = e;
         }
     }
-
+    //近乎有序的数据插入排序 效率很高
     public static void main(String[] args) {
         Integer[] randomTestArr1 = SortingHelper.generatorRandomArray(100000,1,100000);
         Integer[] randomTestArr2 = SortingHelper.generatorRandomArray(100000,1,100000);
         SortingHelper.testSort(new Insertion1Sort(),randomTestArr1);
-        SortingHelper.testSort(new Insertion2Sort(),randomTestArr2);
+        SortingHelper.testSort(new Insertion2Sort(),randomTestArr1 );
 
     }
 }
