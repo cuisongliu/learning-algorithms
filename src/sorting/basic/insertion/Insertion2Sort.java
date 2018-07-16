@@ -23,35 +23,34 @@ package sorting.basic.insertion;
  * THE SOFTWARE.
  */
 
-import sorting.basic.selection.template.SelectionSort;
-import utils.Algorithms;
 import utils.Sorting;
 import utils.SortingHelper;
 
 /**
- * 插入排序
+ * 插入排序 没有优化的版本
  *
  * @author cuisongliu [cuisongliu@qq.com]
  * @since 2018-07-16 上午9:39
  */
-public class InsertionSort implements Sorting {
+public class Insertion2Sort implements Sorting {
     @Override
     public <T extends Comparable> void sort(T[] arr) {
         for (int i = 1 ; i< arr.length; i++){
             //寻找元素arr[i]合适的插入位置
-            for (int j = i;j> 0 ; j --){
-                if (arr[j].compareTo(arr[j-1]) <0)
-                    Algorithms.swap(arr,j,j-1);
-                else break;
+            T e = arr[i];
+            int j ;//j保存e应该插入的位置
+            for (j = i;j> 0 && arr[j-1].compareTo(e) > 0  ; j --){
+                arr[j] = arr[j-1];
             }
+            arr[j] = e;
         }
     }
 
     public static void main(String[] args) {
-        Integer[] randomTestArr1 = SortingHelper.generatorRandomArray(10000,1,100000);
-        Integer[] randomTestArr2 = SortingHelper.generatorRandomArray(10000,1,100000);
-        SortingHelper.testSort(new SelectionSort(),randomTestArr1);
-        SortingHelper.testSort(new InsertionSort(),randomTestArr2);
+        Integer[] randomTestArr1 = SortingHelper.generatorRandomArray(100000,1,100000);
+        Integer[] randomTestArr2 = SortingHelper.generatorRandomArray(100000,1,100000);
+        SortingHelper.testSort(new Insertion1Sort(),randomTestArr1);
+        SortingHelper.testSort(new Insertion2Sort(),randomTestArr2);
 
     }
 }
